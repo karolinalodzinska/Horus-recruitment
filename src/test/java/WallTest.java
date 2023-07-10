@@ -51,4 +51,32 @@ public class WallTest {
         Assertions.assertTrue(foundBlockByColor.isEmpty());
     }
 
+    @Test
+    public void testFindBlocksByMaterial_ExistingMaterial_ReturnListOfBlocks() {
+        // Arrange
+        List<Block> blocks = getSampleBlocks();
+        wall.addBlocks(blocks);
+
+        // Act
+        List<Block> foundBlocksByMaterial = wall.findBlocksByMaterial("wood");
+
+        // Assert
+        Assertions.assertEquals(2, foundBlocksByMaterial.size());
+        Assertions.assertEquals("red", foundBlocksByMaterial.get(0).getColor());
+        Assertions.assertEquals("blue", foundBlocksByMaterial.get(1).getColor());
+    }
+
+    @Test
+    public void testFindBlocksByMaterial_NonExistingMaterial_ReturnEmptyList(){
+        // Arrange
+        List<Block> blocks = getSampleBlocks();
+        wall.addBlocks(blocks);
+
+        // Act
+        List<Block> foundBlocksByMaterial = wall.findBlocksByMaterial("steel");
+
+        // Assert
+        Assertions.assertTrue(foundBlocksByMaterial.isEmpty());
+    }
+
 }
