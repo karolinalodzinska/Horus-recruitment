@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class Wall implements Structure, CompositeBlock {
-    private List<Block> blocks;
+    private final List<Block> blocks;
 
     public Wall() {
         this.blocks = new ArrayList<>();
@@ -39,6 +39,6 @@ public class Wall implements Structure, CompositeBlock {
 
     @Override
     public List<Block> getBlocks() {
-        return null;
+        return blocks;
     }
 }
