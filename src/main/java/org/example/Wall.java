@@ -3,6 +3,7 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Wall implements Structure, CompositeBlock {
@@ -33,13 +34,10 @@ public class Wall implements Structure, CompositeBlock {
 
     @Override
     public List<Block> findBlocksByMaterial(String material) {
-        List<Block> blocksByMaterial = new ArrayList<>();
-        for (Block block : blocks) {
-            if (block.getMaterial().equals(material)) {
-                blocksByMaterial.add(block);
-            }
-        }
-        return blocksByMaterial;
+        return blocks.stream()
+                .flatMap(this::flattenBlocks)
+                .filter(block -> block.getMaterial().equals(material))
+                .collect(Collectors.toList());
     }
 
     @Override
