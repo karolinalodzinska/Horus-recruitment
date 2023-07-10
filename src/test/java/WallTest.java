@@ -79,4 +79,17 @@ public class WallTest {
         Assertions.assertTrue(foundBlocksByMaterial.isEmpty());
     }
 
+    @Test
+    public void testCount_WallWithBlocks_ReturnCorrectCount() {
+        // Arrange
+        List<Block> blocks = getSampleBlocks();
+        wall.addBlocks(blocks);
+
+        // Act
+        int count = wall.count();
+
+        // Assert
+        Assertions.assertEquals(blocks.size(), count);
+    }
+
 }
