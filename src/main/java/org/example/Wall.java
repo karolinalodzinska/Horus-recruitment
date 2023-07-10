@@ -48,4 +48,9 @@ public class Wall implements Structure, CompositeBlock {
     public List<Block> getBlocks() {
         return blocks;
     }
+
+    // Additional method to add block to structure
+    public void addBlock(Block block) {
+        blocks.add(block);
+    }
 }
