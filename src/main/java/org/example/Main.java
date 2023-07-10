@@ -12,7 +12,7 @@ public class Main {
         wall.addBlock(Wall.createBlock("red", "wood"));
         wall.addBlock(Wall.createBlock("blue", "wood"));
 
-        Optional<Block> foundBlockByColor = wall.findBlockByColor("grey");
+        Optional<Block> foundBlockByColor = wall.findBlockByColor("red");
         if (foundBlockByColor.isPresent()) {
             System.out.println("Found block: " + foundBlockByColor.get().getColor());
         } else {
