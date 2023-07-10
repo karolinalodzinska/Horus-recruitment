@@ -3,6 +3,7 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 public class Wall implements Structure, CompositeBlock {
     private final List<Block> blocks;
@@ -13,12 +14,21 @@ public class Wall implements Structure, CompositeBlock {
 
     @Override
     public Optional<Block> findBlockByColor(String color) {
-        for (Block block : blocks) {
-            if (block.getColor().equals(color)) {
-                return Optional.of(block);
-            }
+        return blocks.stream()
+                .flatMap(this::flattenBlocks)
+                .filter(block -> block.getColor().equals(color))
+                .findAny();
+    }
+
+    private Stream<Block> flattenBlocks(Block block) {
+        if (block instanceof CompositeBlock) {
+            return ((CompositeBlock) block)
+                    .getBlocks()
+                    .stream()
+                    .flatMap(this::flattenBlocks);
+        } else {
+            return Stream.of(block);
         }
-        return Optional.empty();
     }
 
     @Override
