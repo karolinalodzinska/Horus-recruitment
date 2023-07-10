@@ -34,7 +34,14 @@ public class Wall implements Structure, CompositeBlock {
 
     @Override
     public int count() {
-        return 0;
+        int count = 0;
+        for (Block block : blocks) {
+            count++;
+            if (block instanceof CompositeBlock) {
+                count += ((CompositeBlock) block).getBlocks().size();
+            }
+        }
+        return count;
     }
 
     @Override
