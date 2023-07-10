@@ -23,7 +23,13 @@ public class Wall implements Structure, CompositeBlock {
 
     @Override
     public List<Block> findBlocksByMaterial(String material) {
-        return null;
+        List<Block> blocksByMaterial = new ArrayList<>();
+        for (Block block : blocks) {
+            if (block.getMaterial().equals(material)) {
+                blocksByMaterial.add(block);
+            }
+        }
+        return blocksByMaterial;
     }
 
     @Override
