@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,10 +8,13 @@ public class Main {
     public static void main(String[] args) {
         Wall wall = new Wall();
 
-        wall.addBlock(Wall.createBlock("red", "brick"));
-        wall.addBlock(Wall.createBlock("red", "brick"));
-        wall.addBlock(Wall.createBlock("red", "wood"));
-        wall.addBlock(Wall.createBlock("blue", "wood"));
+        wall.addBlocks(Arrays.asList(
+                Wall.createBlock("red", "brick"),
+                Wall.createBlock("red", "brick"),
+                Wall.createBlock("red", "wood"),
+                Wall.createBlock("blue", "wood")
+
+        ));
 
         Optional<Block> foundBlockByColor = wall.findBlockByColor("red");
         if (foundBlockByColor.isPresent()) {

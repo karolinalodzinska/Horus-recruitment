@@ -13,6 +13,10 @@ public class Wall implements Structure, CompositeBlock {
         this.blocks = new ArrayList<>();
     }
 
+    public Wall(List<Block> blocks) {
+        this.blocks = blocks;
+    }
+
     @Override
     public Optional<Block> findBlockByColor(String color) {
         return blocks.stream()
@@ -57,9 +61,9 @@ public class Wall implements Structure, CompositeBlock {
         return blocks;
     }
 
-    // Additional method to add block to structure
-    public void addBlock(Block block) {
-        blocks.add(block);
+    // Additional method to add blocks to structure
+    public void addBlocks(List<Block> blocks){
+        this.blocks.addAll(blocks);
     }
 
     // Implementation of Factory design pattern to create factory of blocks
