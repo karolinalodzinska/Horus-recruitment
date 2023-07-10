@@ -3,7 +3,7 @@ package org.example;
 import java.util.List;
 import java.util.Optional;
 
-public class Wall implements Structure {
+public class Wall implements Structure, CompositeBlock {
     private List<Block> blocks;
 
     @Override
@@ -19,5 +19,10 @@ public class Wall implements Structure {
     @Override
     public int count() {
         return 0;
+    }
+
+    @Override
+    public List<Block> getBlocks() {
+        return null;
     }
 }
