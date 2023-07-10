@@ -53,4 +53,9 @@ public class Wall implements Structure, CompositeBlock {
     public void addBlock(Block block) {
         blocks.add(block);
     }
+
+    // Implementation of Factory design pattern to create factory of blocks
+    public static Block createBlock(String color, String material) {
+        return new BasicBlock(color, material);
+    }
 }
